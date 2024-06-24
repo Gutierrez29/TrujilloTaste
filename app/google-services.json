@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "75483016003",
+    "project_id": "trujillo-taste-14e0b",
+    "storage_bucket": "trujillo-taste-14e0b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:75483016003:android:b17f024413d3fbb66c5df6",
+        "android_client_info": {
+          "package_name": "com.uct.trujillotaste"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACKrKeCu5QMpxp9Sc77RLcTbtUv-nn23Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

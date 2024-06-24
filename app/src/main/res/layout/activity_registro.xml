@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/black"
     android:orientation="vertical"
-    tools:context="RegistroActivity">
+    tools:context="RegistryActivity">
 
 
     <LinearLayout
@@ -19,14 +19,13 @@
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="200dp"
+            android:layout_height="249dp"
             android:src="@drawable/logo" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-
-        android:layout_height="320dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
         android:gravity="center"
@@ -35,33 +34,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-10dp"
             android:text="Registrarse"
             android:textColor="@android:color/white"
             android:textSize="28sp"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/nombre_usuario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="@android:color/white"
-            android:hint="Nombres y Apellidos"
-            android:maxLines="1"
-            android:scrollHorizontally="true"
-            android:singleLine="true"
-            android:textColor="@android:color/white"
-            android:textColorHighlight="@android:color/white"
-            android:textColorHint="@android:color/white" />
 
         <EditText
-            android:id="@+id/crear_usuario"
+            android:id="@+id/crear_Correo"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="40dp"
             android:backgroundTint="@android:color/white"
-            android:hint="Usuario"
+            android:hint="Correo"
             android:maxLines="1"
             android:scrollHorizontally="true"
             android:singleLine="true"
@@ -73,7 +58,7 @@
             android:id="@+id/contraseña"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:backgroundTint="@android:color/white"
             android:hint="Contraseña"
             android:maxLines="1"
@@ -84,19 +69,6 @@
             android:inputType="textPassword"
             android:textColorHint="@android:color/white" />
 
-        <EditText
-            android:id="@+id/numero_telefono"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="@android:color/white"
-            android:hint="Numero de telefono"
-            android:maxLines="1"
-            android:scrollHorizontally="true"
-            android:singleLine="true"
-            android:textColor="@android:color/white"
-            android:textColorHighlight="@android:color/white"
-            android:textColorHint="@android:color/white" />
 
     </LinearLayout>
 
@@ -104,7 +76,8 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="80dp">
 
 
         <Button
