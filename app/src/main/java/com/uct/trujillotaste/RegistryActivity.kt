@@ -22,7 +22,7 @@ class RegistryActivity : AppCompatActivity() {
         val correoEditText: EditText = findViewById(R.id.crear_Correo)
         val contraseñaEditText: EditText = findViewById(R.id.contraseña)
         val btnRegistrarse: Button = findViewById(R.id.btn_registrase2)
-        val volverTextView: TextView = findViewById(R.id.volver_pll_inicio)
+        val volverInicioTextView: TextView = findViewById(R.id.volver_pll_inicio)
 
         btnRegistrarse.setOnClickListener {
             val correo = correoEditText.text.toString()
@@ -32,20 +32,22 @@ class RegistryActivity : AppCompatActivity() {
             auth.createUserWithEmailAndPassword(correo, contraseña)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        // Registro exitoso, redirigir a MainActivity
-                        Toast.makeText(this, "Cuenta creada correctamente", Toast.LENGTH_SHORT).show()
+                        // Registro exitoso, mostrar mensaje y redirigir a MainActivity
+                        Toast.makeText(this, "Cuenta registrada correctamente", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, MainActivity::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         startActivity(intent)
                     } else {
-                        // Si el registro falla, mostrar un mensaje al usuario
-                        Toast.makeText(this, "Error al crear la cuenta", Toast.LENGTH_SHORT).show()
+                        // Si el registro falla, mostrar mensaje de error
+                        Toast.makeText(this, "Error al registrar cuenta: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                     }
                 }
         }
 
-        volverTextView.setOnClickListener {
+        volverInicioTextView.setOnClickListener {
+            // Volver al MainActivity
             val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
     }
