@@ -15,10 +15,25 @@
         tools:ignore="ExtraText"
         tools:targetApi="31">
         <activity
+            android:name=".ZonaDos"
+            android:exported="false" />
+        <activity
+            android:name=".ZonaUno"
+            android:exported="false" />
+        <activity
+            android:name=".MocheActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LarcoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TrujilloActivity"
+            android:exported="false" />
+        <activity
             android:name=".Restaurantes"
             android:exported="false" />
         <activity
-            android:name=".inicioActivity"
+            android:name=".InicioActivity"
             android:exported="false" />
         <activity
             android:name=".RegistryActivity"

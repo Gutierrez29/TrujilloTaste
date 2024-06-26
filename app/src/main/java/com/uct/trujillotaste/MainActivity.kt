@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
 
         // Verificar si el usuario ha marcado "Recuerdame" y redirigir si es necesario
         if (sharedPreferences.getBoolean("recuerdameChecked", false)) {
-            val intent = Intent(this, inicioActivity::class.java)
+            val intent = Intent(this, InicioActivity::class.java)
             startActivity(intent)
             finish() // Terminar MainActivity para que el usuario no pueda volver usando el botón de atrás
             return
@@ -124,7 +124,7 @@ class MainActivity : AppCompatActivity() {
                             }
                         }
                         // Inicio de sesión exitoso, redirigir a la actividad deseada
-                        val intent = Intent(this, inicioActivity::class.java)
+                        val intent = Intent(this, InicioActivity::class.java)
                         startActivity(intent)
                         finish() // Terminar MainActivity para que el usuario no pueda volver usando el botón de atrás
                     } else {

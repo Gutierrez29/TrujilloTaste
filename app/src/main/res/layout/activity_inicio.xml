@@ -5,19 +5,101 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="inicioActivity">
+    tools:context=".InicioActivity">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <ImageView
+        android:id="@+id/moche"
+        android:layout_width="231dp"
+        android:layout_height="218dp"
+        android:layout_marginTop="312dp"
+        android:importantForAccessibility="no"
+        android:src="@drawable/moche"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.777"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/viclarco"
+        android:layout_width="144dp"
+        android:layout_height="145dp"
+        android:layout_marginTop="276dp"
+        android:importantForAccessibility="no"
+        android:src="@drawable/vic_larco"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.161"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/trujillo"
+        android:layout_width="236dp"
+        android:layout_height="310dp"
+        android:layout_marginTop="112dp"
+        android:importantForAccessibility="no"
+        android:src="@drawable/trujillo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+        android:id="@+id/btnTrujillo"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:background="@drawable/custom_button_background"
+        app:layout_constraintBottom_toBottomOf="@+id/trujillo"
+        app:layout_constraintEnd_toEndOf="@+id/trujillo"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="@+id/trujillo"
+        app:layout_constraintTop_toTopOf="@+id/trujillo"
+        app:layout_constraintVertical_bias="0.427"
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/btnLarco"
+        android:layout_width="43dp"
+        android:layout_height="35dp"
+        android:background="@drawable/custom_button_background"
+        app:layout_constraintBottom_toBottomOf="@+id/viclarco"
+        app:layout_constraintEnd_toEndOf="@+id/viclarco"
+        app:layout_constraintHorizontal_bias="0.603"
+        app:layout_constraintStart_toStartOf="@+id/viclarco"
+        app:layout_constraintTop_toTopOf="@+id/viclarco"
+        app:layout_constraintVertical_bias="0.481"
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    <Button
+        android:id="@+id/btnMoche"
+        android:layout_width="49dp"
+        android:layout_height="49dp"
+        android:background="@drawable/custom_button_background"
+        android:textSize="12sp"
         android:gravity="center"
-        android:orientation="vertical">
+        app:layout_constraintBottom_toBottomOf="@+id/moche"
+        app:layout_constraintEnd_toEndOf="@+id/moche"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="@+id/moche"
+        app:layout_constraintTop_toTopOf="@+id/moche"
+        app:layout_constraintVertical_bias="0.473"
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="¡Bienvenido!"
-            android:textSize="24sp" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Elije la zona:"
+        android:textColor="@color/black"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.124"
+        tools:ignore="HardcodedText" />
 
-    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+

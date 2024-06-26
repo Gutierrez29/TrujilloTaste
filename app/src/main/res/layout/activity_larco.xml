@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo"
+    tools:context=".LarcoActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VictorLarco"
+        android:textColor="@color/white"
+        tools:layout_editor_absoluteX="167dp"
+        tools:layout_editor_absoluteY="39dp"
+        tools:ignore="HardcodedText,MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/zonados"
+        android:layout_width="314dp"
+        android:layout_height="260dp"
+        android:layout_marginTop="256dp"
+        android:importantForAccessibility="no"
+        android:src="@drawable/zonados"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.618"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/zonauno"
+        android:layout_width="301dp"
+        android:layout_height="343dp"
+        android:layout_marginTop="104dp"
+        android:importantForAccessibility="no"
+        android:src="@drawable/zonauno"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.663"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btnUnoUno"
+        android:layout_width="49dp"
+        android:layout_height="49dp"
+        android:background="@drawable/custom_button_background"
+        app:layout_constraintBottom_toBottomOf="@+id/zonauno"
+        app:layout_constraintEnd_toEndOf="@+id/zonauno"
+        app:layout_constraintHorizontal_bias="0.797"
+        app:layout_constraintStart_toStartOf="@+id/zonauno"
+        app:layout_constraintTop_toTopOf="@+id/zonauno"
+        app:layout_constraintVertical_bias="0.479"
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/btnUno"
+        android:layout_width="49dp"
+        android:layout_height="49dp"
+        android:background="@drawable/custom_button_background"
+        app:layout_constraintBottom_toBottomOf="@+id/zonauno"
+        app:layout_constraintEnd_toEndOf="@+id/zonauno"
+        app:layout_constraintHorizontal_bias="0.325"
+        app:layout_constraintStart_toStartOf="@+id/zonauno"
+        app:layout_constraintTop_toTopOf="@+id/zonauno"
+        app:layout_constraintVertical_bias="0.275"
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/btnDos"
+        android:layout_width="49dp"
+        android:layout_height="49dp"
+        android:background="@drawable/custom_button_background"
+        app:layout_constraintBottom_toBottomOf="@+id/zonados"
+        app:layout_constraintEnd_toEndOf="@+id/zonados"
+        app:layout_constraintStart_toStartOf="@+id/zonados"
+        app:layout_constraintTop_toTopOf="@+id/zonados"
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
