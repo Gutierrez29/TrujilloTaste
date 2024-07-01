@@ -26,18 +26,18 @@ class LarcoActivity : AppCompatActivity() {
 
         // Configurar los OnClickListener para cada ImageView
         zona1uno.setOnClickListener {
-            val intent1 = Intent(this, ZonaUno::class.java)
+            val intent1 = Intent(this, Restaurantes::class.java)
             startActivity(intent1)
         }
 
         // Configurar los OnClickListener para cada ImageView
         zona1.setOnClickListener {
-            val intent1 = Intent(this, ZonaUno::class.java)
+            val intent1 = Intent(this, Restaurantes::class.java)
             startActivity(intent1)
         }
 
         zona2.setOnClickListener {
-            val intent2 = Intent(this, ZonaDos::class.java)
+            val intent2 = Intent(this, Restaurantes::class.java)
             startActivity(intent2)
         }
     }

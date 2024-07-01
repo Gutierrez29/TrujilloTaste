@@ -5,4 +5,4 @@ data class Usuario(
     val nombre: String = "DEFAULT NAME",
     val descripcion: String = "DEFAULT DESCRIPCION",
     val categoria: String = "DEFAULT CATEGORIA",
-    val rating: Double = 5.0)
+    val rating: String = "5.0")

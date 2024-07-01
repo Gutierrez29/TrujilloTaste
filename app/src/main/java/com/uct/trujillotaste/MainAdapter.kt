@@ -10,10 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import de.hdodenhof.circleimageview.CircleImageView
 
-class MainAdapter(private val context: Context) :
+class MainAdapter(
+    private val context: Context,
+    private var datalist: MutableList<Usuario>) :
     RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
-    private var datalist = mutableListOf<Usuario>()
+
 
     fun setListData(data: MutableList<Usuario>) {
         datalist = data
@@ -39,7 +41,6 @@ class MainAdapter(private val context: Context) :
         private val txtDesc: TextView = itemView.findViewById(R.id.txt_desc)
         private val txtCategory: TextView = itemView.findViewById(R.id.txt_category)
         private val txtRating: TextView = itemView.findViewById(R.id.txt_rating)
-        private val ratingStar: ImageView = itemView.findViewById(R.id.txt_rating)
 
         fun bindView(user: Usuario) {
             Glide.with(context).load(user.imageUrl).into(circleImageView)
@@ -47,6 +48,7 @@ class MainAdapter(private val context: Context) :
             txtDesc.text = user.descripcion
             txtCategory.text = user.categoria
             txtRating.text = user.rating.toString()
+            // Aquí puedes asignar una imagen a ratingStar si es necesario
         }
     }
 }
