@@ -1,6 +1,8 @@
 package com.uct.trujillotaste
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -11,13 +13,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 
 class Restaurantes : AppCompatActivity() {
+
     private lateinit var dataArrayList: ArrayList<Usuario>
     private lateinit var recyclerView: RecyclerView // Definir recyclerView como variable
-    private lateinit var adapter: MainAdapter
     private val base = FirebaseFirestore.getInstance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
         setContentView(R.layout.activity_restaurantes)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -25,6 +29,7 @@ class Restaurantes : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
         dataArrayList = arrayListOf()
         recyclerView = findViewById(R.id.reciclerView) // Asignar recyclerView desde el layout
         recyclerView.layoutManager =
@@ -32,8 +37,14 @@ class Restaurantes : AppCompatActivity() {
         val adapter = MainAdapter(this, dataArrayList)
         recyclerView.adapter = adapter
 
-
         llenarRecycler()
+
+        val back = findViewById<Button>(R.id.back)
+        back.setOnClickListener {
+            val intent = Intent(this, InicioActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     private fun llenarRecycler() {
@@ -53,8 +64,7 @@ class Restaurantes : AppCompatActivity() {
                         }
                     }
                     recyclerView.adapter = MainAdapter(this, dataArrayList)
-                    }
                 }
+            }
     }
-
 }

@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.uct.trujillotaste">
+
     <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,21 +16,7 @@
         android:theme="@style/Theme.TrujilloTaste"
         tools:ignore="ExtraText"
         tools:targetApi="31">
-        <activity
-            android:name=".ZonaDos"
-            android:exported="false" />
-        <activity
-            android:name=".ZonaUno"
-            android:exported="false" />
-        <activity
-            android:name=".MocheActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LarcoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".TrujilloActivity"
-            android:exported="false" />
+
         <activity
             android:name=".Restaurantes"
             android:exported="false" />
@@ -38,18 +26,19 @@
         <activity
             android:name=".RegistryActivity"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity">
+            tools:ignore="DiscouragedApi,LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

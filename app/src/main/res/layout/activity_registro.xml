@@ -20,7 +20,8 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="249dp"
-            android:src="@drawable/logo" />
+            android:src="@drawable/logo"
+            tools:ignore="ContentDescription" />
     </LinearLayout>
 
     <LinearLayout
@@ -37,7 +38,8 @@
             android:text="Registrarse"
             android:textColor="@android:color/white"
             android:textSize="28sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
 
 
         <EditText
@@ -52,7 +54,8 @@
             android:singleLine="true"
             android:textColor="@android:color/white"
             android:textColorHighlight="@android:color/white"
-            android:textColorHint="@android:color/white" />
+            android:textColorHint="@android:color/white"
+            tools:ignore="Autofill,HardcodedText,TextFields,VisualLintTextFieldSize" />
 
         <EditText
             android:id="@+id/contraseña"
@@ -67,7 +70,8 @@
             android:textColor="@android:color/white"
             android:textColorHighlight="@android:color/white"
             android:inputType="textPassword"
-            android:textColorHint="@android:color/white" />
+            android:textColorHint="@android:color/white"
+            tools:ignore="Autofill,HardcodedText,VisualLintTextFieldSize" />
 
 
     </LinearLayout>
@@ -87,7 +91,8 @@
             android:layout_gravity="center"
             android:background="@drawable/btn1"
             android:text="Registrarse"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            tools:ignore="HardcodedText,TextSizeCheck,TouchTargetSizeCheck" />
     </LinearLayout>
 
 
@@ -106,7 +111,8 @@
             android:gravity="center"
             android:text="Volver a la pantalla de inicio"
             android:textColor="@android:color/white"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            tools:ignore="HardcodedText" />
 
     </LinearLayout>
 

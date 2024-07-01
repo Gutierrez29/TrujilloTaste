@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Trujillo Taste</string>
-
+    <string name="default_web_client_id">75483016003-n2d3iol34kebg9u9rbcgo10iajvbe2ji.apps.googleusercontent.com</string>
     <string name="rating_star">Calificación</string>
-
 </resources>

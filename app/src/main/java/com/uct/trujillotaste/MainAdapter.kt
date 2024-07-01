@@ -4,22 +4,16 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import de.hdodenhof.circleimageview.CircleImageView
 
 class MainAdapter(
+
     private val context: Context,
     private var datalist: MutableList<Usuario>) :
     RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
-
-
-
-    fun setListData(data: MutableList<Usuario>) {
-        datalist = data
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_row, parent, false)

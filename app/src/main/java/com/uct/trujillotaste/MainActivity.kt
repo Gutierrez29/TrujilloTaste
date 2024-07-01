@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION", "PrivatePropertyName")
+
 package com.uct.trujillotaste
 
 import android.content.Context
@@ -8,19 +10,33 @@ import android.util.Log
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.tasks.Task
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.GoogleAuthProvider
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var iniciar: FirebaseAuth
+    private val RC_SIGN_IN = 9001
+    private lateinit var googleSignInClient: GoogleSignInClient
+    private lateinit var googleSignInLauncher: ActivityResultLauncher<Intent>
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var correoEditText: EditText
     private lateinit var contraseñaEditText: EditText
@@ -36,6 +52,22 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        googleSignInLauncher = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) { result ->
+            val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+            handleSignInResult(task)
+        }
+        iniciar = FirebaseAuth.getInstance()
+
+        // Configuración de Google Sign-In
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+
+        googleSignInClient = GoogleSignIn.getClient(this, gso)
 
         // Inicializar Firebase Analytics
         val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(this)
@@ -104,6 +136,50 @@ class MainActivity : AppCompatActivity() {
             }
             Log.d("MainActivity", "Recuerdame updated: $isChecked")
         }
+
+        val iniciarGoogle = findViewById<ImageButton>(R.id.google)
+        iniciarGoogle.setOnClickListener {
+            signInWithGoogle()
+        }
+
+    }
+
+    private fun signInWithGoogle() {
+        val signInIntent = googleSignInClient.signInIntent
+        googleSignInLauncher.launch(signInIntent)
+    }
+
+    @Deprecated("This method has been deprecated in favor of using the Activity Result API\n      which brings increased type safety via an {@link ActivityResultContract} and the prebuilt\n      contracts for common intents available in\n      {@link androidx.activity.result.contract.ActivityResultContracts}, provides hooks for\n      testing, and allow receiving results in separate, testable classes independent from your\n      activity. Use\n      {@link #registerForActivityResult(ActivityResultContract, ActivityResultCallback)}\n      with the appropriate {@link ActivityResultContract} and handling the result in the\n      {@link ActivityResultCallback#onActivityResult(Object) callback}.")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == RC_SIGN_IN) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            handleSignInResult(task)
+        }
+    }
+
+    private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
+        try {
+            val account = completedTask.getResult(Exception::class.java)
+            if (account != null) {
+                iniciarGoogle(account.idToken!!)
+            }
+        } catch (_: Exception) {
+        }
+    }
+
+    private fun iniciarGoogle(idToken: String) {
+        val credential = GoogleAuthProvider.getCredential(idToken, null)
+        iniciar.signInWithCredential(credential)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    val user = iniciar.currentUser
+                    updateUI(user)
+                } else {
+                    updateUI(null)
+                }
+            }
     }
 
     private fun signInWithEmailAndPassword() {
@@ -123,11 +199,14 @@ class MainActivity : AppCompatActivity() {
                                 apply()
                             }
                         }
+                        val user = iniciar.currentUser
+                        updateUI(user)
                         // Inicio de sesión exitoso, redirigir a la actividad deseada
                         val intent = Intent(this, InicioActivity::class.java)
                         startActivity(intent)
                         finish() // Terminar MainActivity para que el usuario no pueda volver usando el botón de atrás
                     } else {
+                        updateUI(null)
                         // Si el inicio de sesión falla, manejar el error
                         val errorMessage = when (task.exception) {
                             is FirebaseAuthInvalidUserException -> "Usuario no encontrado"
@@ -141,4 +220,32 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Por favor completa todos los campos", Toast.LENGTH_SHORT).show()
         }
     }
+
+    override fun onStart() {
+        super.onStart()
+        val currentUser = iniciar.currentUser
+        if (currentUser != null) {
+            val intent = Intent(this, InicioActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
+
+    private fun updateUI(user: FirebaseUser?) {
+        if (user != null) {
+            startActivity(Intent(this, InicioActivity::class.java))
+            finish()
+        } else {
+            googleSignInClient.signOut().addOnCompleteListener {
+                googleSignInClient.revokeAccess().addOnCompleteListener {
+                    val correo = findViewById<EditText>(R.id.correo)
+                    val contraseña = findViewById<EditText>(R.id.contraseña)
+                    correo.text.clear()
+                    contraseña.text.clear()
+                    correo.requestFocus()
+                }
+            }
+        }
+    }
+
 }
